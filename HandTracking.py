@@ -15,12 +15,10 @@ while True:
     success, img = cap.read()
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = hands.process(imgRGB)
-    # print("hand handmarks", results.multi_hand_landmarks)
 
     if results.multi_hand_landmarks:
         for hand_Lms in results.multi_hand_landmarks:
             for index, lm in enumerate(hand_Lms.landmark):
-                # print(index, lm)
                 h,w,c = img.shape
                 cx, cy = int(lm.x*w), int(lm.y*h)
                 print("index, cx, cy",index, cx, cy)
